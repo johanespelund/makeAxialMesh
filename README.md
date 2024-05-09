@@ -1,5 +1,2 @@
-# MakeAxialMesh
-
-[![OpenFOAM version](https://img.shields.io/badge/OpenFOAM-7-brightgreen)](https://github.com/OpenFOAM/OpenFOAM-7)
-
-This is my personal branch based on [Bernhard Gschaider's original code](http://openfoamwiki.net/index.php/Contrib_MakeAxialMesh).
+# makeAxialMesh
+OpenFOAM utility to convert a 2D block-structured mesh to a axisymmeitrcal (wedge) mesh. Adapted to OpenFOAM v2206 from ZhangYanTJU/makeAxialMesh.
