@@ -451,7 +451,8 @@ int main(int argc, char *argv[])
     scalar offset=0;
     scalar wedgeAngle=defaultAngle;
 
-    vector rotation(0,0,0),origin(0,0,0);
+    vector rotation(0,0,0);
+    vector origin(0,0,0);
 
     bool overwrite = args.options().found("overwrite");
 
@@ -489,15 +490,15 @@ int main(int argc, char *argv[])
       Info << "Using old mode" << endl;
 
       if(rotationalDict.found("makeAxialOffset")) {
-        offset=readScalar(rotationalDict["makeAxialOffset"]);
+        offset=readScalar(rotationalDict.lookup("makeAxialOffset"));
       }
     } else {
-      rotation=rotationalDict.lookup("rotationVector");
-      origin=rotationalDict.lookup("originVector");
+      rotation=rotationalDict.get<vector>("rotationVector");
+      origin=rotationalDict.get<vector>("originVector");
     }
         axisName=word(rotationalDict.lookup("makeAxialAxisPatch"));
 
-    wedgeName=word(rotationalDict["makeAxialWedgePatch"]);
+    wedgeName=word(rotationalDict.lookup("makeAxialWedgePatch"));
 
         if( axisName == wedgeName) {
             FatalErrorIn(args.executable())
@@ -506,7 +507,7 @@ int main(int argc, char *argv[])
         }
 
         if(rotationalDict.found("wedgeAngle")) {
-        wedgeAngle=readScalar(rotationalDict["wedgeAngle"]);
+        wedgeAngle=readScalar(rotationalDict.lookup("wedgeAngle"));
         }
     }
 
