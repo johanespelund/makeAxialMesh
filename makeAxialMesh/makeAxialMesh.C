@@ -137,7 +137,7 @@ scalar getDistance(const polyPatch &axisPatch,linie &axisLine) {
 }
 
 // angle (as suggested in the OpenFOAM-Userguide)
-const scalar defaultAngle=5;   //DPS the plane is rotated +2.5 degrees and -2.5 degrees to make a 5 deg. wedge
+const scalar defaultAngle=1;   //DPS the plane is rotated +2.5 degrees and -2.5 degrees to make a 5 deg. wedge
 
 // changes the coordinates of the points
 
@@ -373,10 +373,10 @@ void changeTypes(polyMesh &mesh,word wedge,word axis,bool hasOffset) {
       const polyPatch& pp = patches[patchI];
 
       if(pp.name()==axis && !hasOffset) {
-          Info << " Changing " << axis << " to symmetryPlane" << endl;
+          Info << " Changing " << axis << " to patch" << endl;
           newPatches[patchI] =
               polyPatch::New(
-                  "symmetryPlane",
+                  "patch",
                   pp.name(),
                   pp.size(),
                   pp.start(),
